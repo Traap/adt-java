@@ -8,20 +8,25 @@
 # Programming language
 language: JAVA 
 
-# sudo is required to install packages.
-sudo: required
+before_cache:
+    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+    directories:
+          - $HOME/.gradle/caches/
+          - $HOME/.gradle/wrapper/
 
-# Ubuntu trusty distribution is location for the TeX and LaTex packages needed.
-dist: trusty
-addons:
-  apt:
-    packages:
-    - pgf 
+jdk:
+  - oraclejdk8
 
+sudo: false
+  addons:
+    apt:
+      packages:
+        -oracle-java8-installer
 
-# We use pdflatex to compile LaTex sources to pdf.
 script:
-- Gradle test 
+  - Gradle test 
 
 # We will deploy the pdf file(s) back to a GitHub releases.
 # deploy:
