@@ -1,12 +1,12 @@
-# Project: 
-#   tlc-article
+# Project:
+#   adt 
 
-# Purpose: 
+# Purpose:
 #   This Travis continuous integration file is use to compile and test JAVA
 #   source files.
 
 # Programming language
-language: JAVA 
+language: JAVA
 
 before_cache:
     - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -20,13 +20,13 @@ jdk:
   - oraclejdk8
 
 sudo: false
-  addons:
-    apt:
-      packages:
-        -oracle-java8-installer
+sddons:
+  apt:
+    packages:
+      - oracle-java8-installer
 
 script:
-  - Gradle test 
+  - Gradle test
 
 # We will deploy the pdf file(s) back to a GitHub releases.
 # deploy:
@@ -37,7 +37,7 @@ script:
 #   file: _build/GettingStarted.pdf
 #   on:
 #     tags: true
-#     branch: master 
+#     branch: master
 # repo: Traap/adt
 
 # We will notify Allan Consulting's Slack channel tlc-article about Travis
