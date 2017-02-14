@@ -12,7 +12,7 @@ $ gradle test
 ```
 
 ### Dependencies 
-* [Java]()
+* [Java](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
 * [Gradle](https://docs.gradle.org/current/release-notes.html)
 
 # Project Management
