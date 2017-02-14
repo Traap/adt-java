@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 public class StackTest {
 
   @Test
-  public void testPushPopA() {
+  public void testPushPopIsEqual() {
     Stack stack = new Stack();
 
     String a0 = "A";
@@ -17,8 +17,7 @@ public class StackTest {
   public void testIsEmpty() {
     Stack stack = new Stack();
 
-    boolean a0 = stack.isEmpty();
-    assertEquals(a0, true);
+    assertTrue(stack.isEmpty());
   }
 
   @Test
@@ -37,7 +36,7 @@ public class StackTest {
     Stack stack = new Stack();
     String s0 = "A";
     // Fill the stack.
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < Stack.MAX; i++) {
       assertTrue(stack.push(s0));
     }
     // Attmpt to overfill.
@@ -49,11 +48,11 @@ public class StackTest {
     Stack stack = new Stack();
     String s0 = "A";
     // Fill the stack.
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < Stack.MAX; i++) {
       assertTrue(stack.push(s0));
     }
     // Empty the stack.
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < Stack.MAX; i++) {
       assertNotNull(stack.pop());
     }
     // The stack is empty.
