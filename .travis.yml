@@ -6,7 +6,7 @@
 #   source files.
 
 # Programming language
-language: JAVA
+language: java
 
 before_cache:
     - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -24,9 +24,6 @@ sddons:
   apt:
     packages:
       - oracle-java8-installer
-
-script:
-  - gradle test
 
 # We will deploy the pdf file(s) back to a GitHub releases.
 # deploy:
