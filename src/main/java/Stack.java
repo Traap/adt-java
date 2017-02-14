@@ -11,14 +11,14 @@ public class Stack {
     return size_ == 0;
   }
 
-  public void push(Object o) { 
-    if (size_ < Stack.MAX) { 
+  public boolean push(Object o) {
+    boolean b = false;
+    if (size_ < Stack.MAX) {
       stack_[size_] = o;
       size_++;
+      b = true;
     }
-    else {
-      System.out.println("Stack full.  Not pushed: " + o);
-    }
+    return b;
   }
 
   public Object pop() {
@@ -28,9 +28,6 @@ public class Stack {
       o = stack_[i];
       stack_[i] = null;
       size_--;
-    }
-    else {
-      System.out.println("Stack empty null returned");
     }
     return o;
   }
