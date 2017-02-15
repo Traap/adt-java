@@ -1,4 +1,4 @@
-public class LinkList{
+public class LinkList {
   private Node head_;
   private Node tail_;
 
@@ -56,6 +56,26 @@ public class LinkList{
 
   public boolean isEmpty() {
     return null == this.head_;
+  }
+
+  public boolean find(Node node) {
+    boolean b = false;
+
+    // Avoid searching when node is null or LinkList is empty.
+    if ( (null != node) && !isEmpty()) {
+      // Search for node.
+      Node next = head_;
+
+      while(null != next && false == b) {
+        if (next == node) {
+          b = true;
+        }
+        else {
+          next = next.getNext();
+        }
+      }
+    }
+    return b;
   }
 
 }
