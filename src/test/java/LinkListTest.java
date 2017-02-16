@@ -1,7 +1,31 @@
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LinkListTest {
+  private String s0;
+  private String s1;
+  private String s2;
+  private Node n0;
+  private Node n1;
+  private Node n2;
+
+  @Before
+  public void setUp() {
+    // Setup three test nodes.
+    s0 = "This is a meaningless string.";
+    n0 = new Node(s0);
+
+    s1 = "This is a meaningless string.";
+    n1 = new Node(s1);
+
+    s2 = "This is a meaningless string.";
+    n2 = new Node(s2);
+
+    assertNotEquals(n0, n1);
+    assertNotEquals(n0, n2);
+    assertNotEquals(n1, n2);
+  }
 
   @Test
   public void testIsEmpty() {
@@ -11,20 +35,6 @@ public class LinkListTest {
 
   @Test
   public void testAddNodes() {
-    // Setup three test nodes.
-    String s0 = "This is a meaningless string.";
-    Node   n0 = new Node(s0);
-
-    String s1 = "This is a meaningless string.";
-    Node   n1 = new Node(s1);
-
-    String s2 = "This is a meaningless string.";
-    Node   n2 = new Node(s2);
-
-    assertNotEquals(n0, n1);
-    assertNotEquals(n0, n2);
-    assertNotEquals(n1, n2);
-
     // Add nodes to LinkList
     LinkList ll = new LinkList();
     ll.add(n0);
@@ -46,20 +56,6 @@ public class LinkListTest {
 
   @Test
   public void testRemoveNode() {
-    // Setup three test nodes.
-    String s0 = "This is a meaningless string.";
-    Node   n0 = new Node(s0);
-
-    String s1 = "This is a meaningless string.";
-    Node   n1 = new Node(s1);
-
-    String s2 = "This is a meaningless string.";
-    Node   n2 = new Node(s2);
-
-    assertNotEquals(n0, n1);
-    assertNotEquals(n0, n2);
-    assertNotEquals(n1, n2);
-
     // Add nodes to LinkList
     LinkList ll = new LinkList();
     ll.add(n0);
@@ -83,20 +79,6 @@ public class LinkListTest {
 
   @Test
   public void testFindNode() {
-    // Setup three test nodes.
-    String s0 = "This is a meaningless string.";
-    Node   n0 = new Node(s0);
-
-    String s1 = "This is a meaningless string.";
-    Node   n1 = new Node(s1);
-
-    String s2 = "This is a meaningless string.";
-    Node   n2 = new Node(s2);
-
-    assertNotEquals(n0, n1);
-    assertNotEquals(n0, n2);
-    assertNotEquals(n1, n2);
-
     // Add nodes to LinkList
     LinkList ll = new LinkList();
     ll.add(n0);
@@ -115,20 +97,6 @@ public class LinkListTest {
 
   @Test
   public void testAddAtEnd() {
-    // Setup three test nodes.
-    String s0 = "This is a meaningless string.";
-    Node   n0 = new Node(s0);
-
-    String s1 = "This is a meaningless string.";
-    Node   n1 = new Node(s1);
-
-    String s2 = "This is a meaningless string.";
-    Node   n2 = new Node(s2);
-
-    assertNotEquals(n0, n1);
-    assertNotEquals(n0, n2);
-    assertNotEquals(n1, n2);
-
     // Add nodes to LinkList
     LinkList ll = new LinkList();
     ll.addAtEnd(n0);
@@ -143,20 +111,6 @@ public class LinkListTest {
 
   @Test
   public void testAddAtFront() {
-    // Setup three test nodes.
-    String s0 = "This is a meaningless string.";
-    Node   n0 = new Node(s0);
-
-    String s1 = "This is a meaningless string.";
-    Node   n1 = new Node(s1);
-
-    String s2 = "This is a meaningless string.";
-    Node   n2 = new Node(s2);
-
-    assertNotEquals(n0, n1);
-    assertNotEquals(n0, n2);
-    assertNotEquals(n1, n2);
-
     // Add nodes to LinkList
     LinkList ll = new LinkList();
     ll.addAtFront(n0);
@@ -167,5 +121,63 @@ public class LinkListTest {
     assertTrue(ll.find(n0));
     assertTrue(ll.find(n1));
     assertTrue(ll.find(n2));
+  }
+
+  @Test
+  public void testRemoveAtEnd() {
+    // Add nodes to LinkList
+    LinkList ll = new LinkList();
+    ll.addAtEnd(n0);
+    ll.addAtEnd(n1);
+    ll.addAtEnd(n2);
+
+    // Find n0, n1, and  n2.
+    assertTrue(ll.find(n0));
+    assertTrue(ll.find(n1));
+    assertTrue(ll.find(n2));
+
+    // Remove n2.
+    assertTrue(ll.removeAtEnd());
+    assertFalse(ll.find(n2));
+
+    // Remove n1.
+    assertTrue(ll.removeAtEnd());
+    assertFalse(ll.find(n1));
+
+    // Remove n0.
+    assertTrue(ll.removeAtEnd());
+    assertFalse(ll.find(n0));
+
+    // Should be empty.
+    assertTrue(ll.isEmpty());
+  }
+
+  @Test
+  public void testRemoveAtFront() {
+    // Add nodes to LinkList
+    LinkList ll = new LinkList();
+    ll.addAtFront(n0);
+    ll.addAtFront(n1);
+    ll.addAtFront(n2);
+
+    // Find n0, n1, and  n2.
+    assertTrue(ll.find(n0));
+    assertTrue(ll.find(n1));
+    assertTrue(ll.find(n2));
+
+    // Remove n2.
+    assertTrue(ll.removeAtFront());
+    assertFalse(ll.find(n2));
+
+    // Remove n1.
+    assertTrue(ll.removeAtFront());
+    assertFalse(ll.find(n1));
+
+    // Remove n0.
+    assertTrue(ll.removeAtFront());
+    assertFalse(ll.find(n0));
+
+    // Should be empty.
+    assertTrue(ll.isEmpty());
   }
 }

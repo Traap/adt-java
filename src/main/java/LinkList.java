@@ -43,7 +43,7 @@ public class LinkList {
     boolean b = false;
 
     // Avoid searching when node is null or LinkList is empty.
-    if ( (null != node) && !isEmpty()) {
+    if ((null != node) && !isEmpty()) {
       // Search for node.
       Node prev = head_;
       Node next = head_;
@@ -69,6 +69,50 @@ public class LinkList {
     return b;
   }
 
+  public boolean removeAtEnd() {
+    boolean b = false;
+    if (!isEmpty()) {
+      // Find End - 1.
+      Node next = this.head_;
+      Node prev = null;
+
+      while(null != next && false == b) {
+        if (next == this.tail_) {
+          b = true;
+          if (this.head_ == this.tail_) {
+            this.head_ = null;
+            this.tail_ = null;
+          }
+          else {
+            this.tail_ = prev;
+            this.tail_.setNext(null);
+          }
+        }
+        else {
+          prev = next;
+          next = next.getNext();
+        }
+      }
+    }
+    return b;
+  }
+
+  public boolean removeAtFront() {
+    boolean b = false;
+    if (!isEmpty()) {
+      b = true;
+      if (this.head_ == this.tail_) {
+        this.head_ = null;
+        this.tail_ = null;
+      }
+      else {
+        Node next = this.head_.getNext();
+        this.head_ = next;
+      }
+    }
+    return b;
+  }
+
   public boolean isEmpty() {
     return null == this.head_;
   }
@@ -77,7 +121,7 @@ public class LinkList {
     boolean b = false;
 
     // Avoid searching when node is null or LinkList is empty.
-    if ( (null != node) && !isEmpty()) {
+    if ((null != node) && !isEmpty()) {
       // Search for node.
       Node next = head_;
 
