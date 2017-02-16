@@ -21,13 +21,8 @@ public class LinkListTest {
     String s2 = "This is a meaningless string.";
     Node   n2 = new Node(s2);
 
-    assertEquals(n0, n0);
-    assertEquals(n1, n1);
-    assertEquals(n2, n2);
-
     assertNotEquals(n0, n1);
     assertNotEquals(n0, n2);
-
     assertNotEquals(n1, n2);
 
     // Add nodes to LinkList
@@ -61,13 +56,8 @@ public class LinkListTest {
     String s2 = "This is a meaningless string.";
     Node   n2 = new Node(s2);
 
-    assertEquals(n0, n0);
-    assertEquals(n1, n1);
-    assertEquals(n2, n2);
-
     assertNotEquals(n0, n1);
     assertNotEquals(n0, n2);
-
     assertNotEquals(n1, n2);
 
     // Add nodes to LinkList
@@ -103,13 +93,8 @@ public class LinkListTest {
     String s2 = "This is a meaningless string.";
     Node   n2 = new Node(s2);
 
-    assertEquals(n0, n0);
-    assertEquals(n1, n1);
-    assertEquals(n2, n2);
-
     assertNotEquals(n0, n1);
     assertNotEquals(n0, n2);
-
     assertNotEquals(n1, n2);
 
     // Add nodes to LinkList
@@ -126,5 +111,61 @@ public class LinkListTest {
     // Remove n1 and then 
     assertTrue(ll.remove(n1));
     assertFalse(ll.find(n1));
+  }
+
+  @Test
+  public void testAddAtEnd() {
+    // Setup three test nodes.
+    String s0 = "This is a meaningless string.";
+    Node   n0 = new Node(s0);
+
+    String s1 = "This is a meaningless string.";
+    Node   n1 = new Node(s1);
+
+    String s2 = "This is a meaningless string.";
+    Node   n2 = new Node(s2);
+
+    assertNotEquals(n0, n1);
+    assertNotEquals(n0, n2);
+    assertNotEquals(n1, n2);
+
+    // Add nodes to LinkList
+    LinkList ll = new LinkList();
+    ll.addAtEnd(n0);
+    ll.addAtEnd(n1);
+    ll.addAtEnd(n2);
+
+    // Find n0, n1, and  n2.
+    assertTrue(ll.find(n0));
+    assertTrue(ll.find(n1));
+    assertTrue(ll.find(n2));
+  }
+
+  @Test
+  public void testAddAtFront() {
+    // Setup three test nodes.
+    String s0 = "This is a meaningless string.";
+    Node   n0 = new Node(s0);
+
+    String s1 = "This is a meaningless string.";
+    Node   n1 = new Node(s1);
+
+    String s2 = "This is a meaningless string.";
+    Node   n2 = new Node(s2);
+
+    assertNotEquals(n0, n1);
+    assertNotEquals(n0, n2);
+    assertNotEquals(n1, n2);
+
+    // Add nodes to LinkList
+    LinkList ll = new LinkList();
+    ll.addAtFront(n0);
+    ll.addAtFront(n1);
+    ll.addAtFront(n2);
+
+    // Find n0, n1, and  n2.
+    assertTrue(ll.find(n0));
+    assertTrue(ll.find(n1));
+    assertTrue(ll.find(n2));
   }
 }

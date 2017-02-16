@@ -13,14 +13,29 @@ public class LinkList {
 
   public void add(Node node) {
     if (null == this.head_) {
-      // Empt list.
+      // Empty list.
       this.head_ = node;
       this.tail_ = node;
     }
     else {
-      Node tail = this.tail_;
-      tail.setNext(node);
+      this.tail_.setNext(node);
       this.tail_ = node;
+    }
+  }
+
+  public void addAtEnd(Node node) {
+    add(node);
+  }
+
+  public void addAtFront(Node node) {
+    if (null == this.head_) {
+      // Empty list.
+      this.head_ = node;
+      this.tail_ = node;
+    }
+    else {
+      node.setNext(this.head_);
+      this.head_ = node;
     }
   }
 
