@@ -52,11 +52,11 @@ public class LinkList {
         if (next == node) {
           prev.setNext(next.getNext());
           prev = next.getNext();
-          if (head_ == node) {
-            head_ = prev;
+          if (this.head_ == node) {
+            this.head_ = prev;
           }
-          if (tail_ == node) {
-            tail_ = prev;
+          if (this.tail_ == node) {
+            this.tail_ = prev;
           }
           b = true;
         }
@@ -69,16 +69,16 @@ public class LinkList {
     return b;
   }
 
-  public boolean removeAtEnd() {
-    boolean b = false;
+  public Node removeAtEnd() {
+    Node node  = null;
     if (!isEmpty()) {
       // Find End - 1.
       Node next = this.head_;
       Node prev = null;
 
-      while(null != next && false == b) {
+      while(null != next && null == node) {
         if (next == this.tail_) {
-          b = true;
+          node = this.tail_;
           if (this.head_ == this.tail_) {
             this.head_ = null;
             this.tail_ = null;
@@ -94,23 +94,24 @@ public class LinkList {
         }
       }
     }
-    return b;
+    return node;
   }
 
-  public boolean removeAtFront() {
-    boolean b = false;
+  public Node removeAtFront() {
+    Node node = null;
     if (!isEmpty()) {
-      b = true;
+      node = this.head_;
       if (this.head_ == this.tail_) {
         this.head_ = null;
         this.tail_ = null;
       }
       else {
-        Node next = this.head_.getNext();
-        this.head_ = next;
+        this.head_ = this.head_.getNext();
       }
+      // Node returned cannot refer to another node.
+      node.setNext(null);
     }
-    return b;
+    return node;
   }
 
   public boolean isEmpty() {

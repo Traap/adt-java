@@ -10,16 +10,34 @@ public class LinkListTest {
   private Node n1;
   private Node n2;
 
+  private void printLinkList(LinkList ll) {
+    System.out.println("\nList: " + ll.toString());
+    Node next = ll.getHead();
+    for (int i = 0; null != next; i++) {
+      this.printNode("n" + i, next);
+      next = next.getNext();
+    }
+  }
+
+  private void printNode(String name, Node node) {
+    System.out.println("Node: " + name);
+    if (null != node) {
+      System.out.println("Addr: " + node.toString());
+      System.out.println("Data: " + node.getData().toString());
+      System.out.println("Next: " + node.getNext() + "\n");
+    }
+  }
+  
   @Before
   public void setUp() {
     // Setup three test nodes.
-    s0 = "This is a meaningless string.";
+    s0 = "This is the first meaningless string.";
     n0 = new Node(s0);
 
-    s1 = "This is a meaningless string.";
+    s1 = "This is the second meaningless string.";
     n1 = new Node(s1);
 
-    s2 = "This is a meaningless string.";
+    s2 = "This is the third meaningless string.";
     n2 = new Node(s2);
 
     assertNotEquals(n0, n1);
@@ -90,7 +108,7 @@ public class LinkListTest {
     assertTrue(ll.find(n1));
     assertTrue(ll.find(n2));
 
-    // Remove n1 and then 
+    // Remove n1 and then
     assertTrue(ll.remove(n1));
     assertFalse(ll.find(n1));
   }
@@ -137,15 +155,15 @@ public class LinkListTest {
     assertTrue(ll.find(n2));
 
     // Remove n2.
-    assertTrue(ll.removeAtEnd());
+    assertNotNull(ll.removeAtEnd());
     assertFalse(ll.find(n2));
 
     // Remove n1.
-    assertTrue(ll.removeAtEnd());
+    assertNotNull(ll.removeAtEnd());
     assertFalse(ll.find(n1));
 
     // Remove n0.
-    assertTrue(ll.removeAtEnd());
+    assertNotNull(ll.removeAtEnd());
     assertFalse(ll.find(n0));
 
     // Should be empty.
@@ -164,17 +182,20 @@ public class LinkListTest {
     assertTrue(ll.find(n0));
     assertTrue(ll.find(n1));
     assertTrue(ll.find(n2));
+this.printLinkList(ll);
 
     // Remove n2.
-    assertTrue(ll.removeAtFront());
+    assertNotNull(ll.removeAtFront());
     assertFalse(ll.find(n2));
+this.printLinkList(ll);
 
     // Remove n1.
-    assertTrue(ll.removeAtFront());
+    assertNotNull(ll.removeAtFront());
     assertFalse(ll.find(n1));
+this.printLinkList(ll);
 
     // Remove n0.
-    assertTrue(ll.removeAtFront());
+    assertNotNull(ll.removeAtFront());
     assertFalse(ll.find(n0));
 
     // Should be empty.
