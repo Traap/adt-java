@@ -14,15 +14,14 @@ public class LinkListTest {
     System.out.println("\nList: " + ll.toString());
     Node next = ll.getHead();
     for (int i = 0; null != next; i++) {
-      this.printNode("n" + i, next);
+      this.printNode(next);
       next = next.getNext();
     }
   }
 
-  private void printNode(String name, Node node) {
-    System.out.println("Node: " + name);
+  private void printNode(Node node) {
     if (null != node) {
-      System.out.println("Addr: " + node.toString());
+      System.out.println("Node: " + node.toString());
       System.out.println("Data: " + node.getData().toString());
       System.out.println("Next: " + node.getNext() + "\n");
     }
