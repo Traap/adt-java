@@ -1,29 +1,19 @@
 public class Queue {
-  public static int MAX = 10;
-  private int size_;
-  private Object[] queue_;
+  private LinkList ll_;
 
   public Queue() {
-    queue_ = new Object[Queue.MAX];
+    ll_ = new LinkList();
   }
 
   public boolean isEmpty() {
-    return size_ == 0;
+    return ll_.isEmpty();
   }
 
-  public boolean enqueue(Object o) {
-    boolean b = false;
-    return b;
+  public void enqueue(Node node) {
+    ll_.addAtEnd(node);
   }
 
-  public Object dequeue() {
-    Object o = null;
-    return o;
+  public Node dequeue() {
+    return ll_.removeAtFront();
   }
-
-  public int size(){
-    return size_;
-  }
-
 }
-

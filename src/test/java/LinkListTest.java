@@ -182,17 +182,14 @@ public class LinkListTest {
     assertTrue(ll.find(n0));
     assertTrue(ll.find(n1));
     assertTrue(ll.find(n2));
-this.printLinkList(ll);
 
     // Remove n2.
     assertNotNull(ll.removeAtFront());
     assertFalse(ll.find(n2));
-this.printLinkList(ll);
 
     // Remove n1.
     assertNotNull(ll.removeAtFront());
     assertFalse(ll.find(n1));
-this.printLinkList(ll);
 
     // Remove n0.
     assertNotNull(ll.removeAtFront());
