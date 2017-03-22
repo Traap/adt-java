@@ -125,7 +125,9 @@ public class Graph {
     }
   }
 
-  System.out.println("List Edges");
+  private void printEdges() {
+    SysOut.PrintSeparator();
+    System.out.println("List Edges");
     for (int i=0; i < nEdges_; i++) {
       printEdge(edges_[i], false);
     }
