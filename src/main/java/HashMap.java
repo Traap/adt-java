@@ -1,11 +1,4 @@
-import junit.framework.Assert;
-import org.junit.Test;
-
-// {{{ HashMapImpl
-public class HashMapImpl {
-
-// {{{ HashMap
-class HashMap {
+public class HashMap {
   int SIZE_OF_TABLE = 128;
   HashEntry[] table;
 
@@ -25,21 +18,21 @@ class HashMap {
     }
     else {
       HashEntry runner = table[index];
-      while (runner.next != null) {
-        if (runner.key == hashEntry.key) {
-          runner.value = hashEntry.value;
+      while (runner.getNext() != null) {
+        if (runner.getKey() == hashEntry.getKey()) {
+          runner.setValue(hashEntry.getValue());
           break;
         }
         else {
-          runner = runner.next;
+          runner = runner.getNext();
         }
       }
-      if (runner.next == null) {
-        if (runner.key == hashEntry.key) {
-          runner.value = hashEntry.value;
+      if (runner.getNext() == null) {
+        if (runner.getKey() == hashEntry.getKey()) {
+          runner.setValue(hashEntry.getValue());
         } 
         else {
-          runner.next = hashentry;
+          runner.setNext(hashEntry);
         }
       }
     }
@@ -52,12 +45,12 @@ class HashMap {
     }
     else {
       HashEntry runner = table[index];
-      if (runner.key == key) {
-        return runner.value;
+      if (runner.getKey() == key) {
+        return runner.getValue();
       }
-      while (runner.next != null) {
-        if (runner.key == key) {
-          return runner.value;
+      while (runner.getNext() != null) {
+        if (runner.getKey() == key) {
+          return runner.getValue();
         }
       }
       return -1;
@@ -70,36 +63,3 @@ class HashMap {
     return hashCode % SIZE_OF_TABLE;
   }
 }
-// ------------------------------------------------------------------------- }}}
-// {{{ HashEntry
-class HashEntry {
-  int key;
-  int value;
-  HashEntry next = null;
-
-  HashEntry() {}
-
-  public HashEntry(int key, int value) {
-    this.key = key;
-    this.value = value;
-  }
-
-  public int getKey()   { return this.key; }
-  public int getValue() { return this.value; }
-}
-// ------------------------------------------------------------------------- }}}
-// {{{ Unit Tests
-@Test
-public void testBasic() {
-    HashMap hashMap = new HashMap();
-    hashMap.put(10, 20);
-    hashMap.put(20, 11);
-    hashMap.put(21, 1);
-    hashMap.put(20, 10);
-
-    int value = hashMap.get(20);
-    Assert.assertEquals(10, value);
-}
-// ------------------------------------------------------------------------- }}}
-}
-// ------------------------------------------------------------------------- }}}

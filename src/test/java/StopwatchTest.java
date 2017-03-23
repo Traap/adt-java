@@ -5,7 +5,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 
-public class TestStopwatch  {
+public class StopwatchTest {
 
 	@Before
     public void setUp() {
@@ -56,13 +56,13 @@ public class TestStopwatch  {
 
     int sleep = 100;
     for (int i = 0; i <= 10; i++) {
-        Stopwatch.lap();
-        try { Thread.sleep(sleep*i); } catch (InterruptedException e) {}
+      Stopwatch.lap();
+      try { Thread.sleep(sleep*i); } catch (InterruptedException e) {}
     }
 
     for (int i = 0; i < 10; i++) {
-        Stopwatch.lap();
-        System.out.println(String.format("lapTime %d: %,dns", i, Stopwatch.lapTime(i)));
+      Stopwatch.lap();
+      System.out.println(String.format("lapTime %d: %,dns", i, Stopwatch.lapTime(i)));
     }
 
     System.out.println(String.format("Stop    : %,dns", Stopwatch.stop()));
