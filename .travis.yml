@@ -1,44 +1,28 @@
-# Project:
-#   adt 
-
-# Purpose:
-#   This Travis continuous integration file is use to compile and test JAVA
-#   source files.
-
-# Programming language
 language: java
-
 before_cache:
-    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
-    directories:
-          - $HOME/.gradle/caches/
-          - $HOME/.gradle/wrapper/
-
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 sudo: false
 sddons:
   apt:
     packages:
-      - oracle-java8-installer
-
-# We will deploy the pdf file(s) back to a GitHub releases.
-# deploy:
-#   provider: releases
-#   skip_cleanup: true
-#   api_key:
-#     secure:
-#   file: _build/GettingStarted.pdf
-#   on:
-#     tags: true
-#     branch: master
-# repo: Traap/adt
-
-# We will notify Allan Consulting's Slack channel tlc-article about Travis
-# continuous integration status changes.
+    - oracle-java8-installer
 notifications:
   email: false
   slack: allanconsulting:V4c7i3ppz6IvrruMLUwFXcfE
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: mP1U89f7YnVJLQSLLUJJtpwai0pNnR5qYnn4J75FStW6Es+EUpg8xGthiZIBS4mWHIqfgDXV9vLITNo0767GvQcHxlRPq9TtySgNLO1dS69PgVUhBu4gJZIX6Zhl+/hdsB1YS5vjzXA2XluAuyqTEkSlHF33CUyHo+d4nYcZST0ugBP1NiOWie9KILnF8PIBH55XyfesNzipnnt741nn3+vhpnSJHXhCe1QbhubP2Dqy4uRBuge6qNW0NhDbJNdv9h8EOQ2zX62H8nqEHVjX+oqK7CGXMit8LKN5XSkRcWWbjWF3ViBajWEVaj5lQNPVKSX6g/X6VrPFuVDLFOO/ydn9AUcfvbBarLs2rNB3kW0qowbmgsk7lNw72eulm+ejXIyMFehLP8Ze3NI98st7veqF8WBlReLz0r7FP15Nojq9XEiKncTYjW5A1ZKL1A64wDR1uxEx7Qvj0cp+8dc3eF35jOEr+OQ5EjkFRaBEbFerFr1knH19b2YPdaFm3oWAB+/E3q6dvkn1zqbcXUFRnpkNbvr+Qo2PO5xaEQByCcgJgpqhOoL9w5qd85b2ftCg0T4fl/0te0iBKBoHtE4VwzoN72PMVtbga5/yJW5F4tdyQdj0eg0EB4dYGXYV1/ACIKM2Gqr3DQIpkIWcqmPTUmESTZY21HZgcTPN2t2mCwM=
+  file: README.md
+  on:
+    tags: true
+    branch: master
+    repo: Traap/adt-java
